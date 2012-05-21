@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Publisher test</title>
+	</head>
+
+	<body>
+
+		<h2>Test</h2>
+
+		<label>Click the button, then check your javascript console.</label>
+		<br>
+		<button onclick="clicked();">Click me</button>
+
+		<script src="js/publisher.js"></script>
+		<script>
+			
+			// Print a message in the console.
+			function log(message) {
+				console.log(message);
+    		}
+
+    		// Subscribe to 'Something changed!'. Whenever that gets
+    		// published, the log function will be executed.
+			Publisher.subscribe('Something changed!', log);
+
+			function clicked() {
+				Publisher.broadcast('Something changed!', 'Hello world!');
+			}
+		</script>
+	</body>
+</html>
